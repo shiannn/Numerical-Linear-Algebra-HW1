@@ -2,6 +2,10 @@
 \usepackage{CJKutf8}
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\newgeometry{vmargin={10mm,10mm}, hmargin={8mm,8mm}}   
 
 \begin{CJK}{UTF8}{bsmi}
     
@@ -11,12 +15,14 @@
 
 \begin{document}
     \maketitle
-    \section{}
-    \section{}
-    \section{}
-    \section{}
+    \section*{}
+    \includegraphics[scale=1.1]{img001.jpg}
+    \section*{}
+    \includegraphics[scale=1.1]{img002.jpg}
+    \newpage
+    \section*{4}
         \subsection*{(a)}
-            \begin{equation}
+            \begin{equation*}
                 Q_{clgs} = \left[
                 \begin{array}{ccc}
                     0.101015254455221 &  0.316173069524858 &  0.541996899879457\\
@@ -26,8 +32,8 @@
                     0.404061017820884 & -0.557952475632102 & -0.120443755528768\\
                 \end{array}
                 \right]
-            \end{equation}
-            \begin{equation}
+            \end{equation*}
+            \begin{equation*}
                 R_{clgs} = \left[    
                 \begin{array}{ccc}
                     9.899494936611665 &  9.495433918790781 &  9.697464427701224\\
@@ -35,9 +41,9 @@
                     0 &                  0 &  1.970115715434855\\
                 \end{array}
                 \right]
-            \end{equation}
+            \end{equation*}
         \subsection*{(b)}
-            \begin{equation}
+            \begin{equation*}
                 Q_{mgs} = \left[
                 \begin{array}{ccc}
                     0.101015254455221 &  0.316173069524858 &  0.541996899879458\\
@@ -47,8 +53,8 @@
                     0.404061017820884 & -0.557952475632102 & -0.120443755528769\\
                 \end{array}
                 \right]
-            \end{equation}
-            \begin{equation}
+            \end{equation*}
+            \begin{equation*}
                 R_{mgs} = \left[    
                 \begin{array}{ccc}
                     9.899494936611665 &  9.495433918790781 &  9.697464427701224\\
@@ -56,9 +62,9 @@
                     0 &                  0 &  1.970115715434855\\
                 \end{array}
                 \right]
-            \end{equation}
+            \end{equation*}
         \subsection*{(c)}
-            \begin{equation}
+            \begin{equation*}
                 Q_{house} = \left[
                 \begin{array}{ccccc}
                     -0.101015254455221 & -0.316173069524858 &  0.541996899879458\\
@@ -68,8 +74,8 @@
                     -0.404061017820884 &  0.557952475632102 & -0.120443755528768\\
                 \end{array}
                 \right]
-            \end{equation}
-            \begin{equation}
+            \end{equation*}
+            \begin{equation*}
                 R_{house} = \left[    
                 \begin{array}{ccc}
                     -9.899494936611665 & -9.495433918790781 & -9.697464427701224\\
@@ -77,9 +83,9 @@
                     0 &                  0 &  1.970115715434854\\
                 \end{array}
                 \right]
-            \end{equation}
+            \end{equation*}
         \subsection*{(d)}
-            \begin{equation}
+            \begin{equation*}
                 Q_{qr} = \left[
                 \begin{array}{ccc}
                     -0.101015254455221 & -0.316173069524858 &  0.541996899879458\\
@@ -89,8 +95,8 @@
                     -0.404061017820884 &  0.557952475632102 & -0.120443755528768\\
                 \end{array}
                 \right]
-            \end{equation}
-            \begin{equation}
+            \end{equation*}
+            \begin{equation*}
                 R_{qr} = \left[    
                 \begin{array}{ccc}
                     -9.899494936611665 & -9.495433918790781 & -9.697464427701224\\
@@ -98,13 +104,13 @@
                     0 &                  0 &  1.970115715434855\\
                 \end{array}
                 \right]
-            \end{equation}
+            \end{equation*}
         \begin{itemize}
             \item house.m以及formQ.m計算出的Q其實是full QR-decomposition的Q(5x5)，上面取前3個行向量(reduce)
             \item Qhouse,Qqr計算出的前兩個行向量方向和Qmgs,Qclgs相反
             \item 由以下結果可以發現，Qhouse以及Qqr非常接近，Qclgs以及Qmgs非常接近
         \end{itemize}
-            \begin{equation}
+            \begin{equation*}
                 Q_{clgs} - Q_{mgs} = (1.0e-15) * \left[
                 \begin{array}{ccc}
                     0 &                  0 & -0.444089209850063\\
@@ -114,8 +120,8 @@
                     0 &                  0 &  0.791033905045424\\
                 \end{array}
                 \right]
-            \end{equation}
-            \begin{equation}
+            \end{equation*}
+            \begin{equation*}
                 Q_{clgs} - Q_{house} = \left[
                 \begin{array}{ccc}
                     0.202030508910442 &  0.632346139049716 & -0.000000000000000\\
@@ -125,8 +131,8 @@
                     0.808122035641769 & -1.115904951264204 &  0.000000000000001\\
                 \end{array}
                 \right]
-            \end{equation}
-            \begin{equation}
+            \end{equation*}
+            \begin{equation*}
                 Q_{clgs} - Q_{qr} = \left[
                 \begin{array}{ccc}
                     0.202030508910442 &  0.632346139049716 & -0.000000000000001\\
@@ -136,8 +142,8 @@
                     0.808122035641769 & -1.115904951264204 &  0.000000000000000\\
                 \end{array}
                 \right]
-            \end{equation}
-            \begin{equation}
+            \end{equation*}
+            \begin{equation*}
                 Q_{mgs} - Q_{house} = \left[
                 \begin{array}{ccc}
                     0.202030508910442 &  0.632346139049716 &  0.000000000000000\\
@@ -147,8 +153,8 @@
                     0.808122035641769 & -1.115904951264204 & -0.000000000000000\\
                 \end{array}
                 \right]
-            \end{equation}
-            \begin{equation}
+            \end{equation*}
+            \begin{equation*}
                 Q_{mgs} - Q_{qr} = \left[
                 \begin{array}{ccc}
                     0.202030508910442 &  0.632346139049716 & -0.000000000000000\\
@@ -158,8 +164,8 @@
                     0.808122035641769 & -1.115904951264204 & -0.000000000000000\\
                 \end{array}
                 \right]
-            \end{equation}
-            \begin{equation}
+            \end{equation*}
+            \begin{equation*}
                 Q_{house} - Q_{qr} = (1.0e-15) * \left[
                 \begin{array}{ccc}
                     0 & -0.388578058618805 & -0.555111512312578\\
@@ -169,8 +175,9 @@
                     -0.055511151231258 & -0.222044604925031 & -0.083266726846887\\
                 \end{array}
                 \right]
-            \end{equation}
-    \section{}
+            \end{equation*}
+    \newpage
+    \section*{5}
         先由以下Matlab code生成A和b\\
         A(i,j)表示第i個points的j次方\\
         b(i)表示$f(x_i)$\\
@@ -316,5 +323,36 @@
                     norm((Qqr'*Qqr)-eye(size(Qqr,2)),2) = 6.962555005180799e-16    
                 \]
         \subsection*{(d)}
+            \subsubsection*{n==20}
+                \begin{equation*}
+                    \begin{aligned}
+                        &norm((Qclgs'*Qclgs)-eye(size(Qclgs,2)),2) = 0.284247463207761\\    
+                        &norm((Qmgs'*Qmgs)-eye(size(Qmgs,2)),2) = 8.746716932470064e-10\\
+                        &norm((Qhouse'*Qhouse)-eye(size(Qhouse,2)),2) = 8.529010197342084e-16\\
+                        &norm((Qqr'*Qqr)-eye(size(Qqr,2)),2) = 8.036632735576470e-16\\    
+                    \end{aligned}
+                \end{equation*}
+            \subsubsection*{n==30}
+                \begin{equation*}
+                    \begin{aligned}
+                        &norm((Qclgs'*Qclgs)-eye(size(Qclgs,2)),2) = 10.176122881374289\\    
+                        &norm((Qmgs'*Qmgs)-eye(size(Qmgs,2)),2) = 1.510355723260155e-04\\
+                        &norm((Qhouse'*Qhouse)-eye(size(Qhouse,2)),2) = 1.001577096959183e-15\\
+                        &norm((Qqr'*Qqr)-eye(size(Qqr,2)),2) = 1.247852933110411e-15\\    
+                    \end{aligned}
+                \end{equation*}
+            \subsubsection*{n==40}
+                \begin{equation*}
+                    \begin{aligned}
+                        &norm((Qclgs'*Qclgs)-eye(size(Qclgs,2)),2) = 16.648385424780358\\    
+                        &norm((Qmgs'*Qmgs)-eye(size(Qmgs,2)),2) = 0.996687978626385\\
+                        &norm((Qhouse'*Qhouse)-eye(size(Qhouse,2)),2) = 1.464687304136877e-15\\
+                        &norm((Qqr'*Qqr)-eye(size(Qqr,2)),2) = 1.353685187305758e-15\\    
+                    \end{aligned}
+                \end{equation*}
+            \begin{itemize}
+                \item 由觀察知道Error隨著n(多項式次數)增加而變大
+                \item clgs的Error增加幅度最大，mgs次之，house以及qr的增加則比較不明顯
+            \end{itemize}
 \end{CJK}
 \end{document}
