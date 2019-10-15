@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{CJKutf8}
 \usepackage{graphicx}
+\usepackage{listings}
 
 \begin{CJK}{UTF8}{bsmi}
     
@@ -170,5 +171,150 @@
                 \right]
             \end{equation}
     \section{}
+        先由以下Matlab code生成A和b\\
+        A(i,j)表示第i個points的j次方\\
+        b(i)表示$f(x_i)$\\
+        故要求出一個向量C使得$||AC-B||$最小\\
+        \lstset{language=Matlab}
+        \begin{lstlisting}
+            function [A b]= Problem5(m,n)
+                A = zeros(m,n);
+                b = zeros(m,1);
+                randomX = -1 + 2*rand(50,1);
+                for i = 1:m
+                    for j = 1:n
+                        A(i,j) = randomX(i)^(j-1);
+                    end
+                    b(i) = 1/(1+25*randomX(i)*randomX(i));
+                end
+            end
+        \end{lstlisting} 
+        \subsection*{(a)}
+            normal equation
+            \[
+                C = (A^TA)^{-1}A^Tb = (1.0e+02) * \left[
+                \begin{array}{c}
+                    0.009266423367277\\
+                    0.000730039608735\\
+                    -0.108840944793721\\
+                    -0.028573061155644\\
+                    0.552804577730198\\
+                    0.209382086193257\\
+                    -1.280292616257701\\
+                    -0.562589305946127\\
+                    1.344327841477173\\
+                    0.630741675839826\\
+                    -0.519962759549714\\
+                    -0.250389421464620\\
+                \end{array}
+                \right]
+            \]
+        \subsection*{(b)}
+                \[C = R^{-1}Q^Tb\]\\
+            \subsubsection*{clgs}
+            \[
+                C = (1.0e+02) * \left[
+                \begin{array}{c}
+                    0.009266423367466\\
+                    0.000730039607547\\
+                    -0.108840944804360\\
+                    -0.028573061126327\\
+                    0.552804577828534\\
+                    0.209382086004154\\
+                    -1.280292616563978\\
+                    -0.562589305456206\\
+                    1.344327841863105\\
+                    0.630741675288278\\
+                    -0.519962759720052\\
+                    -0.250389421238670\\
+                \end{array}
+                \right]
+            \]
+            \subsubsection*{mgs}
+            \[
+                C = (1.0e+02) * \left[
+                \begin{array}{c}
+                    0.009266423367476\\
+                    0.000730039607261\\
+                    -0.108840944804852\\
+                    -0.028573061120461\\
+                    0.552804577832482\\
+                    0.209382085970047\\
+                    -1.280292616575244\\
+                    -0.562589305374260\\
+                    1.344327841876387\\
+                    0.630741675201564\\
+                    -0.519962759725604\\
+                    -0.250389421205177\\
+                \end{array}
+                \right]
+            \]
+            \subsubsection*{house}
+            \[
+                C = (1.0e+02) * \left[
+                \begin{array}{c}
+                    0.009266423367476\\
+                    0.000730039607264\\
+                    -0.108840944804823\\
+                    -0.028573061120535\\
+                    0.552804577832215\\
+                    0.209382085970520\\
+                    -1.280292616574408\\
+                    -0.562589305375484\\
+                    1.344327841875328\\
+                    0.630741675202948\\
+                    -0.519962759725135\\
+                    -0.250389421205744\\
+                \end{array}
+                \right]
+            \]
+            \subsubsection*{qr}
+            \[
+                C = (1.0e+02) * \left[
+                \begin{array}{c}
+                    0.009266423367476\\
+                    0.000730039607264\\
+                    -0.108840944804823\\
+                    -0.028573061120534\\
+                    0.552804577832217\\
+                    0.209382085970509\\
+                    -1.280292616574416\\
+                    -0.562589305375445\\
+                    1.344327841875344\\
+                    0.630741675202894\\
+                    -0.519962759725144\\
+                    -0.250389421205719\\
+                \end{array}
+                \right]
+            \]
+        \subsection*{(c)}
+            \begin{itemize}
+                \item 各種QR分解求出的C的差異
+                    \subitem norm(Cclgs-Cmgs,2) = 1.300158998436881e-08
+                    \subitem norm(Cclgs-Chouse,2) = 1.278435505825690e-08 
+                    \subitem norm(Cclgs-Cqr,2) = 1.279171694197872e-08
+                    \subitem norm(Cmgs-Chouse,2) = 2.465714855962380e-10
+                    \subitem norm(Cmgs-Cqr,2) = 2.396182370231675e-10
+                    \subitem norm(Cqr-Chouse,2) = 7.560032136098663e-12
+                    \subitem 可以看出qr和house最接近
+            \end{itemize}
+                2-norm error $E = ||Q^TQ-I||_2$
+            \subsubsection*{clgs}
+                \[
+                    norm((Qclgs'*Qclgs)-eye(size(Qclgs,2)),2) = 4.741139005678812e-11    
+                \]
+            \subsubsection*{mgs}
+                \[
+                    norm((Qmgs'*Qmgs)-eye(size(Qmgs,2)),2) = 2.300945671132748e-13    
+                \]
+            \subsubsection*{house}
+                \[
+                    norm((Qhouse'*Qhouse)-eye(size(Qhouse,2)),2) = 7.826796311242105e-16    
+                \]
+            \subsubsection*{qr}
+                \[
+                    norm((Qqr'*Qqr)-eye(size(Qqr,2)),2) = 6.962555005180799e-16    
+                \]
+        \subsection*{(d)}
 \end{CJK}
 \end{document}
